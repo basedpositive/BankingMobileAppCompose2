@@ -26,9 +26,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-@Preview
+
 @Composable
-fun TopNavigationBar() {
+fun TopNavigationBar(topText: String) {
     Row(
         modifier = Modifier.fillMaxWidth()
             .background(Color.Black)
@@ -47,7 +47,7 @@ fun TopNavigationBar() {
                 .padding(4.dp)
         )
         Text(
-            text = "Home",
+            text = topText,
             fontSize = 17.sp,
             color = Color.White
         )

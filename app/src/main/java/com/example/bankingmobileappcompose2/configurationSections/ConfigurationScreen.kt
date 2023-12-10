@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.example.bankingmobileappcompose2.BottomNavigationBar
 import com.example.bankingmobileappcompose2.TopNavigationBar
 
@@ -20,9 +21,10 @@ import com.example.bankingmobileappcompose2.TopNavigationBar
 @Preview
 @Composable
 fun ConfigurationScreen() {
+    val navController = rememberNavController()
     Scaffold(
         bottomBar = {
-            BottomNavigationBar()
+            BottomNavigationBar(navController)
         }
     ) { padding ->
 
@@ -32,7 +34,7 @@ fun ConfigurationScreen() {
                 .padding(padding),
         ){
 
-            TopNavigationBar()
+            TopNavigationBar("Configuration")
             Spacer(modifier = Modifier.height(16.dp))
             ConfigurationSection()
         }

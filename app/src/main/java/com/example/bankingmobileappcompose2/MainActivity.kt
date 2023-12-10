@@ -10,6 +10,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.bankingmobileappcompose2.ui.theme.BankingMobileAppCompose2Theme
 import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.bankingmobileappcompose2.cardSections.CardScreen
+import com.example.bankingmobileappcompose2.configurationSections.ConfigurationScreen
 import com.example.bankingmobileappcompose2.homeSections.CardsSection
 import com.example.bankingmobileappcompose2.homeSections.HistorySection
 import com.example.bankingmobileappcompose2.homeSections.ManagementSection
@@ -20,8 +25,28 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BankingMobileAppCompose2Theme {
-                HomeScreen()
+                App()
             }
+        }
+    }
+}
+
+
+@Composable
+fun App() {
+    val navController = rememberNavController()
+
+    Scaffold(
+        bottomBar = { BottomNavigationBar(navController) }
+    ) { innerPadding ->
+        NavHost(
+            navController = navController,
+            startDestination = "home",
+            modifier = Modifier.padding(innerPadding)
+        ) {
+            composable("home") { HomeScreen() }
+            composable("cards") { CardScreen() }
+            composable("configuration") { ConfigurationScreen() }
         }
     }
 }
@@ -31,20 +56,18 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun HomeScreen() {
+    val navController = rememberNavController()
     Scaffold(
         bottomBar = {
-            BottomNavigationBar()
+            BottomNavigationBar(navController)
         }
     ) { padding ->
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
         ){
-
-
-            TopNavigationBar()
+            TopNavigationBar("Home")
             CardsSection()
             Spacer(modifier = Modifier.height(16.dp))
             ManagementSection()

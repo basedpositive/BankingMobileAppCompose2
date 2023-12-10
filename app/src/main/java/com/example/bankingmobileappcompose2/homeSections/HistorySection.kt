@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -55,6 +56,11 @@ fun sortHistoryByDate(historyList: List<History>): List<History> {
 @Composable
 fun HistorySection() {
     val sortedHistoryList = sortHistoryByDate(historyList)
+
+    /* Text(
+        text = "History",
+        fontWeight = FontWeight.Bold,
+    ) */
 
     LazyColumn(
         modifier = Modifier

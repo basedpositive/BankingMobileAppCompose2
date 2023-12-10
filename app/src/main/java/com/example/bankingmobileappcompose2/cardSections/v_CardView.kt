@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -22,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -63,8 +65,7 @@ fun VerticalCardItem(
     }
 
     Box(modifier = Modifier
-        .padding(bottom = lastItemPaddingBottom)
-        .padding(top = 8.dp)
+        .padding(top = 16.dp, bottom = lastItemPaddingBottom)
     ) {
         Column(
             modifier = Modifier
@@ -76,11 +77,35 @@ fun VerticalCardItem(
                 .padding(vertical = 12.dp, horizontal = 16.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = "3010-BANK",
-                fontWeight = FontWeight.Bold,
-                color = Color.White
-            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ){
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_bank),
+                        contentDescription = "Icon",
+                        modifier = Modifier.size(24.dp),
+                        colorFilter = ColorFilter.tint(Color.White)
+                    )
+                    Text(
+                        text = "BANK",
+                        modifier = Modifier.padding(start = 8.dp),
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White,
+
+                        )
+                }
+                Text(
+                    text = "CREDIT",
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                )
+            }
 
             Spacer(modifier = Modifier.height(10.dp))
 
@@ -93,22 +118,33 @@ fun VerticalCardItem(
                     fontWeight = FontWeight.Bold,
                     color = Color.White
                 )
-                Text(
-                    text = card.cardCode,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
+                Image(
+                    painter = painterResource(id = R.drawable.ic_wifi_outline),
+                    contentDescription = "Icon",
+                    modifier = Modifier.size(24.dp),
+                    colorFilter = ColorFilter.tint(Color.White)
                 )
             }
+
             Row(
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(
-                    text = "VALID\nTHRU",
-                    fontSize = 6.sp
-                )
+                modifier = Modifier.fillMaxWidth(),
+            ){
+                Row {
+                    Text(
+                        text = "VALID\nTHRU",
+                        fontSize = 7.sp
+                    )
+
+                    Text(
+                        text = card.cardDate,
+                        modifier = Modifier.padding(start = 5.dp),
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                }
 
                 Text(
-                    text = card.cardDate,
+                    text = card.cardCode,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
                 )

@@ -49,6 +49,8 @@ android {
 dependencies {
 
     implementation ("com.jakewharton.threetenabp:threetenabp:1.4.6")
+    implementation ("androidx.navigation:navigation-compose:2.7.5")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

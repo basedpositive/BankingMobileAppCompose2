@@ -21,44 +21,48 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.bankingmobileappcompose2.R
 import com.example.bankingmobileappcompose2.data.Management
 
-val managementList = listOf(
-    Management(
-        icon = Icons.Rounded.Send,
-        name = "Pay",
-        background = Color.Black
-    ),
-    Management(
-        icon = Icons.Rounded.Share,
-        name = "Transfer",
-        background = Color.Black
-    ),
-    Management(
-        icon = Icons.Rounded.DateRange,
-        name = "Invest",
-        background = Color.Black
-    ),
-    Management(
-        icon = Icons.Rounded.Place,
-        name = "Extract",
-        background = Color.Black
-    ),
-)
+@Composable
+fun ManagementList(): List<Management> {
+    return listOf(
+        Management(
+            icon = painterResource(id = R.drawable.ic_pay),
+            name = "Pay",
+            background = Color.Black
+        ),
+        Management(
+            icon = painterResource(id = R.drawable.ic_transfer),
+            name = "Transfer",
+            background = Color.Black
+        ),
+        Management(
+            icon = painterResource(id = R.drawable.ic_invest),
+            name = "Invest",
+            background = Color.Black
+        ),
+        Management(
+            icon = painterResource(id = R.drawable.ic_extract),
+            name = "Extract",
+            background = Color.Black
+        ),
+    )
+}
 
 @Preview
 @Composable
-fun ManagementSection() {
-
-    LazyRow( modifier = Modifier
-        .padding(top = 16.dp)
-    ){
+fun ManagementSection(managementList: List<Management> = ManagementList()) {
+    LazyRow(
+        modifier = Modifier.padding(top = 16.dp)
+    ) {
         items(managementList.size) {
-            ManagementItem(it)
+            ManagementItem(it, managementList)
         }
     }
 }
@@ -66,7 +70,8 @@ fun ManagementSection() {
 
 @Composable
 fun ManagementItem(
-    index: Int
+    index: Int,
+    managementList: List<Management>
 ) {
     val management = managementList[index]
     var lastPaddingEnd = 0.dp
@@ -97,7 +102,7 @@ fun ManagementItem(
             Icon(
                 modifier = Modifier
                     .size(36.dp),
-                imageVector = management.icon,
+                painter = management.icon,
                 contentDescription = management.name,
                 tint = Color.White
             )

@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.example.bankingmobileappcompose2.BottomNavigationBar
 import com.example.bankingmobileappcompose2.TopNavigationBar
 import com.example.bankingmobileappcompose2.homeSections.addNewCard
@@ -24,9 +25,10 @@ import com.example.bankingmobileappcompose2.homeSections.addNewCard
 @Preview
 @Composable
 fun HomeScreen() {
+    val navController = rememberNavController()
     Scaffold(
         bottomBar = {
-            BottomNavigationBar()
+            BottomNavigationBar(navController)
         }
     ) { padding ->
 
@@ -37,7 +39,7 @@ fun HomeScreen() {
         ){
 
 
-            TopNavigationBar()
+            TopNavigationBar("Add Card")
             Spacer(modifier = Modifier.height(16.dp))
 
             Column(
