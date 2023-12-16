@@ -4,6 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,17 +36,20 @@ class MainActivity : ComponentActivity() {
 }
 
 
+
+
+@Preview
 @Composable
 fun App() {
     val navController = rememberNavController()
 
     Scaffold(
         bottomBar = { BottomNavigationBar(navController) }
-    ) { innerPadding ->
+    ) { padding ->
         NavHost(
             navController = navController,
             startDestination = "home",
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(padding)
         ) {
             composable("home") { HomeScreen() }
             composable("cards") { CardScreen() }
@@ -53,26 +60,23 @@ fun App() {
 
 
 
-@Preview
+
 @Composable
 fun HomeScreen() {
-    val navController = rememberNavController()
-    Scaffold(
-        bottomBar = {
-            BottomNavigationBar(navController)
-        }
-    ) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding)
         ){
             TopNavigationBar("Home")
             CardsSection()
             Spacer(modifier = Modifier.height(16.dp))
             ManagementSection()
             HistorySection()
-        }
     }
 }
+
+
+
+
+
 

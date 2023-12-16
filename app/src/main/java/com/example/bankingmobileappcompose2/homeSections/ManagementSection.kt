@@ -76,32 +76,34 @@ fun ManagementItem(
     val management = managementList[index]
     var lastPaddingEnd = 0.dp
     if (index == managementList.size - 1) {
-        lastPaddingEnd = 16.dp
+        lastPaddingEnd = 8.dp
     }
 
-    Box(modifier = Modifier.padding(start = 8.dp, end = lastPaddingEnd)) {
+    Box(
+        modifier = Modifier
+        .padding(start = 8.dp, end = lastPaddingEnd)) {
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(25.dp))
             .background(Color.White)
-            .size(105.dp)
+            .size(90.dp)
             .clickable {}
-            .padding(8.dp),
+            .padding(4.dp),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         Box(
             modifier = Modifier
-                .size(70.dp)
-                .clip(RoundedCornerShape(8.dp))
+                .size(65.dp)
+                .clip(RoundedCornerShape(10.dp))
                 .background(management.background)
-                .padding(6.dp),
+                .padding(4.dp),
             Alignment.Center
         ) {
             Icon(
                 modifier = Modifier
-                    .size(36.dp),
+                    .size(30.dp),
                 painter = management.icon,
                 contentDescription = management.name,
                 tint = Color.White

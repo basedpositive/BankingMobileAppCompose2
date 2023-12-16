@@ -36,6 +36,7 @@ import com.example.bankingmobileappcompose2.ui.theme.RedStart
 import com.example.bankingmobileappcompose2.ui.theme.PurpleStart
 import com.example.bankingmobileappcompose2.ui.theme.PurpleEnd
 
+
 @Composable
 fun v_CardView(cards: List<Card>) {
     LazyColumn(
@@ -71,8 +72,8 @@ fun VerticalCardItem(
             modifier = Modifier
                 .clip(RoundedCornerShape(25.dp))
                 .background(card.cardColor)
-                .width(250.dp)
-                .height(160.dp)
+                .width(290.dp)
+                .height(180.dp)
                 .clickable { }
                 .padding(vertical = 12.dp, horizontal = 16.dp),
             verticalArrangement = Arrangement.SpaceBetween
@@ -80,16 +81,17 @@ fun VerticalCardItem(
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ){
 
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
+                    modifier = Modifier,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.ic_bank),
                         contentDescription = "Icon",
-                        modifier = Modifier.size(24.dp),
+                        modifier = Modifier.size(32.dp),
                         colorFilter = ColorFilter.tint(Color.White)
                     )
                     Text(
@@ -97,17 +99,18 @@ fun VerticalCardItem(
                         modifier = Modifier.padding(start = 8.dp),
                         fontWeight = FontWeight.Bold,
                         color = Color.White,
+                        fontSize = 18.sp
 
-                        )
+                    )
                 }
                 Text(
                     text = "CREDIT",
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
+                    fontSize = 18.sp
                 )
             }
 
-            Spacer(modifier = Modifier.height(10.dp))
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -116,37 +119,50 @@ fun VerticalCardItem(
                 Text(
                     text = card.cardNumber,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    color = Color.White,
+                    fontSize = 18.sp
                 )
                 Image(
                     painter = painterResource(id = R.drawable.ic_wifi_outline),
                     contentDescription = "Icon",
-                    modifier = Modifier.size(24.dp),
+                    modifier = Modifier.size(32.dp),
                     colorFilter = ColorFilter.tint(Color.White)
                 )
             }
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
             ){
-                Row {
-                    Text(
-                        text = "VALID\nTHRU",
-                        fontSize = 7.sp
-                    )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column {
+                        Text(
+                            text = "VALID",
+                            fontSize = 7.sp
+                        )
+                        Text(
+                            text = "THRU",
+                            fontSize = 7.sp
+                        )
+                    }
 
                     Text(
                         text = card.cardDate,
                         modifier = Modifier.padding(start = 5.dp),
                         fontWeight = FontWeight.Bold,
-                        color = Color.White
+                        color = Color.White,
+                        fontSize = 18.sp
                     )
                 }
 
                 Text(
                     text = card.cardCode,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    color = Color.White,
+                    modifier = Modifier.padding(start = 32.dp),
+                    fontSize = 18.sp
                 )
             }
 
@@ -157,7 +173,8 @@ fun VerticalCardItem(
                 Text(
                     text = card.cardOwnerName,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    color = Color.White,
+                    fontSize = 18.sp
                 )
                 Image(
                     painter = image,

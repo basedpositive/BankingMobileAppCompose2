@@ -18,25 +18,16 @@ import com.example.bankingmobileappcompose2.BottomNavigationBar
 import com.example.bankingmobileappcompose2.TopNavigationBar
 
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun ConfigurationScreen() {
-    val navController = rememberNavController()
-    Scaffold(
-        bottomBar = {
-            BottomNavigationBar(navController)
-        }
-    ) { padding ->
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding),
         ){
 
             TopNavigationBar("Configuration")
             Spacer(modifier = Modifier.height(16.dp))
             ConfigurationSection()
-        }
     }
 }

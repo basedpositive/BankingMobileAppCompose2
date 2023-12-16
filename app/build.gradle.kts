@@ -50,6 +50,8 @@ dependencies {
 
     implementation ("com.jakewharton.threetenabp:threetenabp:1.4.6")
     implementation ("androidx.navigation:navigation-compose:2.7.5")
+    implementation ("com.google.accompanist:accompanist-insets:0.23.1")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 
 
     implementation(libs.androidx.core.ktx)

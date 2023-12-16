@@ -17,6 +17,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
@@ -52,24 +53,7 @@ var cards = listOf(
         cardCode = "369",
         cardOwnerName = "Best Arthur",
         cardColor = getGradient(PurpleStart, PurpleEnd)
-    ),
-    Card(
-        cardType = "MASTER CARD",
-        cardNumber = "0000 2363 8364 6639",
-        cardDate = "9/25",
-        cardCode = "558",
-        cardOwnerName = "Eyed Herald",
-        cardColor = getGradient(PurpleStart, PurpleEnd)
-    ),
-    Card(
-        cardType = "VISA",
-        cardNumber = "0000 2363 8364 5514",
-        cardDate = "7/25",
-        cardCode = "141",
-        cardOwnerName = "English James",
-        cardColor = getGradient(RedStart, OrangeEnd)
     )
-
 )
 
 fun getGradient(
@@ -130,8 +114,8 @@ fun CardItem(
             modifier = Modifier
                 .clip(RoundedCornerShape(25.dp))
                 .background(card.cardColor)
-                .width(250.dp)
-                .height(160.dp)
+                .width(290.dp)
+                .height(180.dp)
                 .clickable { }
                 .padding(vertical = 12.dp, horizontal = 16.dp),
             verticalArrangement = Arrangement.SpaceBetween
@@ -139,16 +123,17 @@ fun CardItem(
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ){
 
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
+                    modifier = Modifier,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.ic_bank),
                         contentDescription = "Icon",
-                        modifier = Modifier.size(24.dp),
+                        modifier = Modifier.size(32.dp),
                         colorFilter = ColorFilter.tint(Color.White)
                     )
                     Text(
@@ -156,6 +141,7 @@ fun CardItem(
                         modifier = Modifier.padding(start = 8.dp),
                         fontWeight = FontWeight.Bold,
                         color = Color.White,
+                        fontSize = 18.sp
 
                     )
                 }
@@ -163,10 +149,10 @@ fun CardItem(
                     text = "CREDIT",
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
+                    fontSize = 18.sp
                 )
             }
 
-            Spacer(modifier = Modifier.height(10.dp))
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -175,37 +161,50 @@ fun CardItem(
                 Text(
                     text = card.cardNumber,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    color = Color.White,
+                    fontSize = 18.sp
                 )
                 Image(
                     painter = painterResource(id = R.drawable.ic_wifi_outline),
                     contentDescription = "Icon",
-                    modifier = Modifier.size(24.dp),
+                    modifier = Modifier.size(32.dp),
                     colorFilter = ColorFilter.tint(Color.White)
                 )
             }
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
             ){
-                Row {
-                    Text(
-                        text = "VALID\nTHRU",
-                        fontSize = 7.sp
-                    )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column {
+                        Text(
+                            text = "VALID",
+                            fontSize = 7.sp
+                        )
+                        Text(
+                            text = "THRU",
+                            fontSize = 7.sp
+                        )
+                    }
 
                     Text(
                         text = card.cardDate,
                         modifier = Modifier.padding(start = 5.dp),
                         fontWeight = FontWeight.Bold,
-                        color = Color.White
+                        color = Color.White,
+                        fontSize = 18.sp
                     )
                 }
 
                 Text(
                     text = card.cardCode,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    color = Color.White,
+                    modifier = Modifier.padding(start = 32.dp),
+                    fontSize = 18.sp
                 )
             }
 
@@ -216,7 +215,8 @@ fun CardItem(
                 Text(
                     text = card.cardOwnerName,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    color = Color.White,
+                    fontSize = 18.sp
                 )
                 Image(
                     painter = image,
